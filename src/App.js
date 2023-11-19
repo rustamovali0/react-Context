@@ -7,37 +7,34 @@ import Contact from "./Components/Router/Contact";
 import Customer from "./Components/Router/Customer";
 import Employee from "./Components/Router/Employee";
 import Portfolio from "./Components/Router/Portfolio";
-import { Context } from "./Context/Context";
-import { useContext } from 'react';
-// import "./Style.css"
-import './Components/Router/style.css'
-
-// document.classlist
-// localStorage
+import { createContext } from "react";
 
 
-
+export const ThemeContext = createContext();
 
 function App() {
 
-  const { theme } = useContext(Context)
-  console.log(theme)
+  const [dark, setDark] = React.useState("#000")
+
+  const data = {
+    dark, setDark
+  }
 
   return (
-    <div className={`App ${theme}`}>  
+    <div className="App">
 
+    <ThemeContext.Provider value = {data} >
+        <Navbar />
 
-      <Navbar />
-
-      <Routes>
-        <Route element={<Home />} path="/home" />
-        <Route element={<Service />} path="/service" />
-        <Route element={<Contact />} path="/contact" />
-        <Route element={<Customer />} path="/customer" />
-        <Route element={<Employee />} path="/Employee" />
-        <Route element={<Portfolio />} path="/Portfolio" />
-      </Routes>
-
+        <Routes>
+          <Route element={<Home />} path="/home" />
+          <Route element={<Service />} path="/service" />
+          <Route element={<Contact />} path="/contact" />
+          <Route element={<Customer />} path="/customer" />
+          <Route element={<Employee />} path="/Employee" />
+          <Route element={<Portfolio />} path="/Portfolio" />
+        </Routes>
+      </ThemeContext.Provider>
     </div>
   );
 }

@@ -1,21 +1,24 @@
-import React from "react";
+
+ import React from "react";
 import { Link } from "react-router-dom";
-// npm i
 import {useContext} from "react";
 import {Context} from "../Context/Context";
 // import "../style.css"
 
 const Navbar = () => {
   const {theme, setTheme} = useContext(Context)
+  const {textColor, setTextColor} = useContext(Context)
 const changeTheme = ()=>{
   setTheme(theme === "light" ? "dark" : "light")
+  setTextColor(textColor === "dark" ? "light" : "dark")
+
 }
 
   return (
     <div>
-      <nav class={`navbar navbar-expand-lg bg-body-tertiary ${theme}`}>
+      <nav class={`navbar navbar-expand-lg bg-body-tertiary abab ${theme}`}>
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class={`navbar-brand text-${textColor}`} href="#">
             Navbar
           </a>
           <button
@@ -32,32 +35,33 @@ const changeTheme = ()=>{
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <Link class="nav-link active" to="/home">
+              <Link className={`nav-link text-${textColor}`} to="/home">
                   Home
                 </Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/service">
+              <Link className={`nav-link text-${textColor}`} to="/home">
                   Service
                 </Link>
               </li>
               <li class="nav-item">
-              <Link class="nav-link" to="/contact">
+              <Link className={`nav-link text-${textColor}`} to="/home">
                   Contact
                 </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a className={`nav-link text-${textColor}`} href="#">
+
                   Portfolio
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+              <a className={`nav-link text-${textColor}`} href="#">
                   Employee
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+              <a className={`nav-link text-${textColor}`} href="#">
                   Customer
                 </a>
               </li>
