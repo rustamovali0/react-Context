@@ -9,11 +9,6 @@ const Home = () => {
   const { theme, setTheme } = useContext(Context)
   const { textColor, setTextColor } = useContext(Context)
 
-  const changeTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light")
-    setTextColor(textColor === "dark" ? "light" : "dark")
-  }
-
   const requestEmpolyee = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users')
     if (res.ok && res.status === 200) {
@@ -29,7 +24,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div className={`bg-${theme} text-${textColor}`}>
+    <div className={`bg-${theme} text-${textColor}`} style={{width:"100%", height:"94vh"}}>
       {users.map((item, index) => (
         <h1 key={index}>{item.name}</h1>
       ))}
