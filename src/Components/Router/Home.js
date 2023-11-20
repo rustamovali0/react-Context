@@ -18,7 +18,7 @@ const Home = () => {
       alert("An error occurred while fetching data.")
     }
   }
-
+  
   React.useEffect(() => {
     requestEmpolyee()
   }, [])
